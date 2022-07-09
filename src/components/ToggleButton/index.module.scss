@@ -1,0 +1,41 @@
+@use '~/styles/variables.scss' as v;
+
+$area-width: 60px;
+$area-padding: 2px;
+$icon-width: 20px;
+
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: $area-width;
+  height: 24px;
+  background-color: v.$color-border-line;
+  border-radius: 12px;
+  transition: all 0.3s ease-out;
+
+  &.-on {
+    background-color: v.$color-theme;
+  }
+
+  > .icon {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $icon-width;
+    height: 20px;
+    padding: 3px;
+    margin: 0 $area-padding;
+    cursor: pointer;
+    background-color: #fcfcfd;
+    border-radius: 50%;
+    transition: all 0.3s ease-out;
+    transform: translate(0%, -50%);
+
+    &.-on {
+      transform: translate(calc(100% * ($area-width - ($area-padding * 2) - $icon-width) / $icon-width), -50%);
+    }
+  }
+}
