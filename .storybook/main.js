@@ -39,6 +39,21 @@ module.exports = {
         loader: require.resolve('@svgr/webpack'),
       },
     );
+
+    config.module.rules.unshift({
+      // MEMO: To adopt 'pdfjs'
+      test: /pdf\.worker\.(min\.)?js/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[contenthash].[ext]',
+            outputPath: 'static/worker',
+          },
+        },
+      ],
+    });
+
     return config;
   },
 };
