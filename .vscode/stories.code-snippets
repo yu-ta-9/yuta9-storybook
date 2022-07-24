@@ -1,0 +1,38 @@
+{
+  "stories": {
+    "scope": "javascriptreact, typescriptreact",
+    "prefix": "stories",
+    "body": [
+      "import { ${1:componentName} } from '.'",
+      "",
+      "import type { ComponentMeta, ComponentStoryObj } from '@storybook/react';",
+      "",
+      "export default {",
+      "\tcomponent: ${1:componentName},",
+      "} as ComponentMeta<typeof ${1:componentName}>;",
+      "",
+      "export const Template: ComponentStoryObj<typeof ${1:componentName}> = {",
+      "\targs: {},",
+      "};"
+    ],
+    "description": "Basic stories file format."
+  },
+  "stories-ex": {
+    "scope": "javascriptreact, typescriptreact",
+    "prefix": "stories-ex",
+    "body": [
+      "import { ${1:componentName} } from '.'",
+      "",
+      "import type { ComponentMeta, ComponentStory } from '@storybook/react';",
+      "",
+      "export default {",
+      "\tcomponent: ${1:componentName},",
+      "} as ComponentMeta<typeof ${1:componentName}>;",
+      "",
+      "export const Template: ComponentStory<typeof ${1:componentName}> = (_args) => {",
+      "\treturn <></>;",
+      "};"
+    ],
+    "description": "Basic stories file format."
+  }
+}
