@@ -1,0 +1,30 @@
+@use '~/styles/variables.scss' as v;
+
+.folder-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: v.$color-precise;
+    }
+  }
+
+  > .onclick {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+
+    > .heading {
+      width: 100%;
+      margin-left: 4px;
+      font-size: v.$font-size-middle;
+      font-weight: v.$font-weight-bold;
+    }
+  }
+}

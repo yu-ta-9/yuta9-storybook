@@ -1,0 +1,21 @@
+@use '~/styles/variables.scss' as v;
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: v.$color-prime;
+    }
+  }
+
+  > .heading {
+    margin-left: 4px;
+    font-size: v.$font-size-middle;
+    font-weight: v.$font-weight-normal;
+  }
+}
