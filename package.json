@@ -34,7 +34,8 @@
     "lintjs:eslint": "eslint --ext js,jsx,ts,tsx --ignore-path .gitignore --ignore-path .eslintignore .",
     "lintjs:prettier": "prettier --ignore-path .gitignore --ignore-path .eslintignore --loglevel warn \"**/*.{js,jsx,ts,tsx}\"",
     "lintcss": "stylelint 'src/**/*.scss'",
-    "lintcss:fix": "stylelint --fix 'src/**/*.scss'"
+    "lintcss:fix": "stylelint --fix 'src/**/*.scss'",
+    "icons": "npx @svgr/cli --no-index -d src/components/icons public/icons"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +67,7 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@svgr/cli": "^6.3.1",
     "@types/react-pdf": "^5.7.2",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
