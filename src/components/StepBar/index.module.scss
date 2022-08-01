@@ -1,0 +1,61 @@
+@use '~/styles/variables.scss' as v;
+
+$circle-radius: 20px;
+
+.step-bar {
+  display: flex;
+  align-items: center;
+
+  > .step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  > .step > .index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $circle-radius * 2;
+    height: $circle-radius * 2;
+    padding: 11px;
+    color: v.$color-disabled;
+    border: solid 2px v.$color-disabled;
+    border-radius: 50%;
+  }
+
+  > .step > .index.-progress {
+    color: v.$color-prime;
+    border: solid 2px v.$color-prime;
+  }
+
+  > .step > .index.-completed {
+    color: v.$color-white;
+    background-color: v.$color-prime;
+    border: solid 2px v.$color-prime;
+  }
+
+  > .step > .label {
+    margin-top: 12px;
+    color: v.$color-disabled;
+  }
+
+  > .step > .label.-reached {
+    color: v.$color-prime;
+  }
+
+  > .step:not(:first-child) > .bar {
+    position: absolute;
+    top: $circle-radius;
+    right: calc(50% + $circle-radius);
+    left: calc(-50% + $circle-radius);
+    height: 2px;
+    border: solid 1px v.$color-disabled;
+  }
+
+  > .step:not(:first-child) > .bar.-reached {
+    border: solid 1px v.$color-prime;
+  }
+}
