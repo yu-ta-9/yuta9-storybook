@@ -12,7 +12,11 @@ $color-border-line: #eaeff0;
 
 /* font-size */
 $font-size-middle: 14px;
+$font-size-large: 20px;
 
 /* font-weight */
 $font-weight-normal: 300;
 $font-weight-bold: 600;
+
+/* cubic-bezier */
+$cubic-bezier: cubic-bezier(0.17, 0.67, 0.79, 0.76);
