@@ -1,0 +1,33 @@
+@use '~/styles/variables.scss' as v;
+
+.example-hook {
+  > .heading {
+    margin-bottom: 8px;
+    font-size: v.$font-size-large;
+    font-weight: v.$font-weight-bold;
+  }
+
+  > .spacer {
+    display: block;
+    height: 40px;
+  }
+
+  > .horizontal {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid v.$color-prime;
+  }
+
+  > .vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: max-content;
+    padding: 8px;
+    border: 2px solid v.$color-prime;
+  }
+}
