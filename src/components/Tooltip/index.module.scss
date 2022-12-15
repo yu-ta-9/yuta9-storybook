@@ -1,0 +1,31 @@
+@use '~/styles/variables.scss' as v;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tooltip-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: v.$z-index-overlay-on-tooltip-on-others;
+  width: 100vw;
+  height: 100vh;
+}
+
+.tooltip-container {
+  position: fixed;
+  z-index: v.$z-index-tooltip-on-others;
+  min-width: 138px;
+  padding: 8px;
+  background-color: v.$color-white;
+  filter: drop-shadow(0 0 20px rgb(0 0 0 / 15%));
+  border-radius: 8px;
+  animation: fade-in 0.25s v.$cubic-bezier;
+}
