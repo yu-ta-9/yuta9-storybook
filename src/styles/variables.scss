@@ -20,3 +20,7 @@ $font-weight-bold: 600;
 
 /* cubic-bezier */
 $cubic-bezier: cubic-bezier(0.17, 0.67, 0.79, 0.76);
+
+/* z-index */
+$z-index-overlay-on-tooltip-on-others: 1000;
+$z-index-tooltip-on-others: 1010;
