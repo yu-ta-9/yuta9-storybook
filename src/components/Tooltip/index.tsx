@@ -53,8 +53,6 @@ export const Tooltip: FC<Props> = ({
     return null;
   }
 
-  console.log(document.body.clientHeight);
-
   return (
     <>
       <div className={styles['tooltip-overlay']} onClick={onClose} />
