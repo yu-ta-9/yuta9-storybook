@@ -33,10 +33,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: lint test
-        run: yarn lint:js
+        run: yarn lintjs
 
       - name: stylelint test
-        run: yarn lint:css
+        run: yarn lintcss
 
       - name: typescript test
         run: yarn ts-test
