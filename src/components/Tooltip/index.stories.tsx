@@ -33,16 +33,16 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
 
 export const TopAndRight = Template.bind({});
 TopAndRight.args = {
-  isTop: true,
-  topOffset: 0,
-  isRight: true,
-  rightOffset: 0,
+  verticalPosition: 'top',
+  verticalOffset: 0,
+  horizontalPosition: 'right',
+  horizontalOffset: 0,
 };
 
 export const BottomAndLeft = Template.bind({});
 BottomAndLeft.args = {
-  isBottom: true,
-  bottomOffset: 0,
-  isLeft: true,
-  leftOffset: 0,
+  verticalPosition: 'bottom',
+  verticalOffset: 0,
+  horizontalPosition: 'left',
+  horizontalOffset: 0,
 };

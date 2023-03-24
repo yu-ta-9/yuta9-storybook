@@ -1,40 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { FC } from 'react';
 
 import styles from './index.module.scss';
 
 type Props = {
-  /** 表示位置の基準となる要素 */
+  /** basis position for display position */
   basisRef: HTMLElement | null;
-  /** 開閉状態 */
   isOpen: boolean;
-  /** クローズ関数 */
   onClose: () => void;
-  /** 表示位置の基準要素に対する、位置調整オプション */
-  isTop?: boolean;
-  isBottom?: boolean;
-  isLeft?: boolean;
-  isRight?: boolean;
-  topOffset?: number;
-  bottomOffset?: number;
-  leftOffset?: number;
-  rightOffset?: number;
+  verticalPosition: 'top' | 'bottom';
+  horizontalPosition: 'left' | 'right';
+  verticalOffset?: number;
+  horizontalOffset?: number;
 };
+
+type Position = { top?: string; right?: string; bottom?: string; left?: string };
 
 export const Tooltip: FC<Props> = ({
   basisRef,
   isOpen,
   onClose,
-  isTop,
-  isBottom,
-  isLeft,
-  isRight,
-  topOffset,
-  bottomOffset,
-  leftOffset,
-  rightOffset,
+  verticalPosition,
+  horizontalPosition,
+  verticalOffset,
+  horizontalOffset,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [basisRect, setBasisRect] = useState<DOMRect>();
 
   useEffect(() => {
@@ -49,6 +41,57 @@ export const Tooltip: FC<Props> = ({
     setBasisRect(basisRef.getBoundingClientRect());
   }, [isOpen, basisRef]);
 
+  const top = useMemo(
+    () => (basisRect?.top || 0) + (basisRect?.height || 0) + (verticalOffset || 0),
+    [basisRect?.top, basisRect?.height, verticalOffset],
+  );
+  const right = useMemo(
+    () => document.documentElement.clientWidth - (basisRect?.right || 0) + (horizontalOffset || 0),
+    [basisRect?.right, horizontalOffset],
+  );
+  const bottom = useMemo(
+    () => document.documentElement.clientHeight - (basisRect?.top || 0) + (verticalOffset || 0),
+    [basisRect?.top, verticalOffset],
+  );
+  const left = useMemo(() => (basisRect?.left || 0) + (horizontalOffset || 0), [basisRect?.left, horizontalOffset]);
+
+  const position = useMemo<Position>(() => {
+    const position: Position = {};
+
+    if (ref.current === null) {
+      return position;
+    }
+
+    switch (verticalPosition) {
+      case 'top':
+        if (top + ref.current.getBoundingClientRect().height > document.documentElement.clientHeight) {
+          position.bottom = `${bottom}px`;
+          break;
+        }
+        position.top = `${top}px`;
+        break;
+      case 'bottom':
+        if (bottom - ref.current.getBoundingClientRect().height < 0) {
+          position.top = `${top}px`;
+          break;
+        }
+        position.bottom = `${bottom}px`;
+        break;
+    }
+
+    // TODO: implement a function that detects horizontal position is overflow, but need to consider when sp
+    switch (horizontalPosition) {
+      case 'left':
+        position.left = `${left}px`;
+        break;
+      case 'right':
+        position.right = `${right}px`;
+        break;
+    }
+
+    return position;
+  }, [ref, verticalPosition, horizontalPosition, top, right, bottom, left]);
+
   if (!isOpen) {
     return null;
   }
@@ -58,20 +101,10 @@ export const Tooltip: FC<Props> = ({
       <div className={styles['tooltip-overlay']} onClick={onClose} />
 
       <div
+        ref={ref}
         className={styles['tooltip-container']}
         role='tooltip'
-        style={{
-          top: isTop ? `${(basisRect?.top || 0) + (basisRect?.height || 0) + (topOffset || 0)}px` : '',
-          bottom: isBottom
-            ? `${
-                document.body.clientHeight - (basisRect?.bottom || 0) - (basisRect?.height || 0) + (bottomOffset || 0)
-              }px`
-            : '',
-          left: isLeft ? `${(basisRect?.left || 0) + (basisRect?.width || 0) + (leftOffset || 0)}px` : '',
-          right: isRight
-            ? `${document.body.clientWidth - (basisRect?.right || 0) + (basisRect?.width || 0) + (rightOffset || 0)}px`
-            : '',
-        }}
+        style={{ top: position.top, right: position.right, bottom: position.bottom, left: position.left }}
       >
         <div>Tooltip Test</div>
         <ul>
