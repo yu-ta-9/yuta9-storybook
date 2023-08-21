@@ -68,7 +68,7 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
-    "@svgr/cli": "^6.3.1",
+    "@svgr/cli": "^8.1.0",
     "@types/d3": "^7.4.0",
     "@types/react-pdf": "^5.7.2",
     "babel-loader": "^8.2.5",
