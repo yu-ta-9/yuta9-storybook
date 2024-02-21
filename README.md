@@ -2,15 +2,13 @@
 
 This repository is to show components created from my idea.
 
-# Introduction
-
 ## Getting started
 
 ```bash
 
-$ yarn
-$ yarn storybook # launch
-$ yarn build-storybook # build
+yarn
+yarn storybook # launc
+yarn build-storybook # build
 
 ```
 
@@ -23,4 +21,4 @@ $ yarn build-storybook # build
 
 ## Asset
 
-- Icons: https://tabler-icons.io/
+- Icons: <https://tabler-icons.io/>
