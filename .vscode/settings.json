@@ -7,8 +7,8 @@
   "typescript.inlayHints.parameterNames.enabled": "all",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.codeActionsOnSave": {
-    "source.addMissingImports": true,
-    "source.fixAll.eslint": true
+    "source.addMissingImports": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "stylelint.validate": ["css", "scss"],
   "[javascriptreact]": {
