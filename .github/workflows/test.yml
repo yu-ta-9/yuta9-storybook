@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: ['ubuntu-latest']
-        node: [16.x]
+        node: [20.x]
 
     steps:
       - name: setup nodeJs ${{ matrix.node }}
@@ -32,11 +32,17 @@ jobs:
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
-      - name: lint test
-        run: yarn lintjs
+      - name: test format
+        run: yarn format
 
-      - name: stylelint test
-        run: yarn lintcss
+      - name: test lint
+        run: yarn lint:js
 
-      - name: typescript test
-        run: yarn ts-test
+      - name: test css
+        run: yarn lint:css
+
+      - name: test typescript
+        run: yarn ts:test
+
+      - name: test unit
+        run: yarn test

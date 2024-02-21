@@ -7,4 +7,4 @@ Below packages is used for the component.
 
 ## References
 
-- https://zenn.dev/kin/articles/658b06a3233e60
+- <https://zenn.dev/kin/articles/658b06a3233e60>
