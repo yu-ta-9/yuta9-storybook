@@ -2,9 +2,26 @@
   "name": "yuta9-storybook",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "ts-test": "tsc --noEmit",
+    "lintjs": "run-s lintjs:eslint \"lintjs:prettier --check\"",
+    "lintjs:fix": "run-s \"lintjs:eslint --fix\" \"lintjs:prettier --write\"",
+    "lintjs:eslint": "eslint --ext js,jsx,ts,tsx --ignore-path .gitignore --ignore-path .eslintignore .",
+    "lintjs:prettier": "prettier --ignore-path .gitignore --ignore-path .eslintignore --loglevel warn \"**/*.{js,jsx,ts,tsx}\"",
+    "lintcss": "stylelint 'src/**/*.scss'",
+    "lintcss:fix": "stylelint --fix 'src/**/*.scss'",
+    "icons": "npx @svgr/cli --no-index -d src/components/icons public/icons"
+  },
   "dependencies": {
     "classnames": "^2.3.1",
     "d3": "^7.8.3",
+    "date-fns": "^3.3.1",
     "file-loader": "^6.2.0",
     "pdfjs-dist": "2.12.313",
     "react": "^18.2.0",
@@ -65,22 +82,6 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "ts-test": "tsc --noEmit",
-    "lintjs": "run-s lintjs:eslint \"lintjs:prettier --check\"",
-    "lintjs:fix": "run-s \"lintjs:eslint --fix\" \"lintjs:prettier --write\"",
-    "lintjs:eslint": "eslint --ext js,jsx,ts,tsx --ignore-path .gitignore --ignore-path .eslintignore .",
-    "lintjs:prettier": "prettier --ignore-path .gitignore --ignore-path .eslintignore --loglevel warn \"**/*.{js,jsx,ts,tsx}\"",
-    "lintcss": "stylelint 'src/**/*.scss'",
-    "lintcss:fix": "stylelint --fix 'src/**/*.scss'",
-    "icons": "npx @svgr/cli --no-index -d src/components/icons public/icons"
   },
   "eslintConfig": {
     "extends": [
