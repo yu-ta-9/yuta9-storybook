@@ -10,14 +10,14 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/preset-scss',
     '@storybook/addon-viewport',
-    '@storybook/addon-mdx-gfm'
+    '@storybook/addon-mdx-gfm',
   ],
 
   staticDirs: ['../public'],
 
   framework: {
     name: '@storybook/react-webpack5',
-    options: {}
+    options: {},
   },
 
   webpackFinal: async (config) => {
@@ -63,6 +63,6 @@ module.exports = {
   },
 
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };
