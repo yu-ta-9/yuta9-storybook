@@ -1,12 +1,20 @@
 import { Badge } from '.';
 
-import type { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+};
 
-export const Template: ComponentStoryObj<typeof Badge> = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {
   args: {
     label: 'Java',
     colorType: 'green',

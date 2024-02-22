@@ -2,18 +2,26 @@ import { useRef, useState } from 'react';
 
 import { Tooltip } from '.';
 
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
+import type { ComponentProps } from 'react';
 
 import { IconButton } from '../buttons/IconButton';
 import { IconTooltip } from '../icons/Tooltip';
 
-export default {
+const meta = {
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>;
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+};
 
-const Template: ComponentStory<typeof Tooltip> = (args) => {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const Template = (args: ComponentProps<typeof Tooltip>): any => {
   const basisRef = useRef<HTMLButtonElement>(null);
-
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -26,23 +34,37 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
         />
       </div>
 
-      <Tooltip {...args} basisRef={basisRef.current} isOpen={isOpen} onClose={(): void => setIsOpen(false)} />
+      <meta.component {...args} basisRef={basisRef.current} isOpen={isOpen} onClose={(): void => setIsOpen(false)} />
     </>
   );
 };
 
-export const TopAndRight = Template.bind({});
-TopAndRight.args = {
-  verticalPosition: 'top',
-  verticalOffset: 0,
-  horizontalPosition: 'right',
-  horizontalOffset: 0,
+export const TopAndRight: Story = {
+  args: {
+    basisRef: null,
+    isOpen: false,
+    verticalPosition: 'top',
+    verticalOffset: 0,
+    horizontalPosition: 'right',
+    horizontalOffset: 0,
+  },
+  // MEMO: アロー関数だとusexxでエラーが出るのでfunctionを使用している
+  render: function Comp(args) {
+    return Template(args);
+  },
 };
 
-export const BottomAndLeft = Template.bind({});
-BottomAndLeft.args = {
-  verticalPosition: 'bottom',
-  verticalOffset: 0,
-  horizontalPosition: 'left',
-  horizontalOffset: 0,
+export const BottomAndLeft: Story = {
+  args: {
+    basisRef: null,
+    isOpen: false,
+    verticalPosition: 'bottom',
+    verticalOffset: 0,
+    horizontalPosition: 'left',
+    horizontalOffset: 0,
+  },
+  // MEMO: アロー関数だとusexxでエラーが出るのでfunctionを使用している
+  render: function Comp(args) {
+    return Template(args);
+  },
 };

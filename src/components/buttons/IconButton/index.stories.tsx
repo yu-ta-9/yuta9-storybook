@@ -1,14 +1,22 @@
 import { IconButton } from '.';
 
-import type { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 
 import { IconChevronDown } from '../../icons/ChevronDown';
 
-export default {
+const meta = {
   component: IconButton,
-} as ComponentMeta<typeof IconButton>;
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+};
 
-export const Template: ComponentStoryObj<typeof IconButton> = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {
   args: {
     name: 'Story Icon Button',
     svgComponent: <IconChevronDown width={16} height={16} />,
