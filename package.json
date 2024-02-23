@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "ci:check": "npm-run-all --parallel ts:test test lint:js lint:css format",
     "test": "jest",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
